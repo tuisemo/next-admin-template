@@ -54,7 +54,7 @@ export default defineConfig(({ env, command, envMode }) => ({
         pathRewrite: { "^/mock": "" }
       },
       "/api": {
-        target: "http://localhost:8080"
+        target: "http://shanhe.kim"
       }
     }
   },

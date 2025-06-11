@@ -10,7 +10,7 @@ import type {
 class Request<T = unknown> {
   private _instance: AxiosInstance
   private _cache = new Map<string, { data: unknown; expire: number }>()
-  private _defaultCacheTime = 5000 // 5秒缓存
+  private _defaultCacheTime = 2000 // 2秒缓存
   // token现在从userStore动态获取
 
   /**
@@ -116,8 +116,8 @@ class Request<T = unknown> {
   constructor(config: AxiosRequestConfig) {
     this._instance = axios.create({
       ...config,
-      baseURL: config.baseURL || import.meta.env.API_BASE_URL,
-      timeout: 10000
+      baseURL: config.baseURL,
+      timeout: 30000
     })
     this._instance.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => {
@@ -205,4 +205,6 @@ class Request<T = unknown> {
     )
   }
 }
-export default new Request({})
+export default new Request({
+  baseURL: import.meta.env.PUBLIC_API_BASE_URL
+})
