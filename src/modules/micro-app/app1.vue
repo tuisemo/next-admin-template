@@ -2,6 +2,7 @@
     <button @click="fetchData">
         app
     </button>
+    <x-footer></x-footer>
 </template>
 
 <script setup lang="ts">
